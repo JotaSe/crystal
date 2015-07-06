@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2015 1:37:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.jotase.crystalsystem.models.Orderglass" table="orderglass" catalog="cristal">
+        <composite-id name="id" class="com.jotase.crystalsystem.models.OrderglassId">
+            <key-property name="id" type="int">
+                <column name="id" />
+            </key-property>
+            <key-property name="budgetId" type="int">
+                <column name="budget_id" />
+            </key-property>
+            <key-property name="budgetCostumersId" type="int">
+                <column name="budget_costumers_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="budget" class="com.jotase.crystalsystem.models.Budget" update="false" insert="false" fetch="select">
+            <column name="budget_id" not-null="true" />
+            <column name="budget_costumers_id" not-null="true" />
+        </many-to-one>
+        <property name="qty" type="int">
+            <column name="qty" not-null="true" />
+        </property>
+        <property name="height" type="int">
+            <column name="height" not-null="true" />
+        </property>
+        <property name="width" type="int">
+            <column name="width" not-null="true" />
+        </property>
+        <property name="thickness" type="int">
+            <column name="thickness" not-null="true" />
+        </property>
+        <property name="comments" type="string">
+            <column name="comments" length="45" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="45" not-null="true" />
+        </property>
+        <property name="price" type="double">
+            <column name="price" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="supplied" type="java.lang.Boolean">
+            <column name="supplied" />
+        </property>
+        <set name="glasseses" table="glasses" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="orderGlass_id" not-null="true" />
+                <column name="orderGlass_budget_id" not-null="true" />
+                <column name="orderGlass_budget_costumers_id" not-null="true" />
+            </key>
+            <one-to-many class="com.jotase.crystalsystem.models.Glasses" />
+        </set>
+    </class>
+</hibernate-mapping>

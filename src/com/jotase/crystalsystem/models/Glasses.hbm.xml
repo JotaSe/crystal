@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2015 1:37:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.jotase.crystalsystem.models.Glasses" table="glasses" catalog="cristal">
+        <composite-id name="id" class="com.jotase.crystalsystem.models.GlassesId">
+            <key-property name="id" type="int">
+                <column name="id" />
+            </key-property>
+            <key-property name="orderGlassId" type="int">
+                <column name="orderGlass_id" />
+            </key-property>
+            <key-property name="orderGlassBudgetId" type="int">
+                <column name="orderGlass_budget_id" />
+            </key-property>
+            <key-property name="orderGlassBudgetCostumersId" type="int">
+                <column name="orderGlass_budget_costumers_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="orderglass" class="com.jotase.crystalsystem.models.Orderglass" update="false" insert="false" fetch="select">
+            <column name="orderGlass_id" not-null="true" />
+            <column name="orderGlass_budget_id" not-null="true" />
+            <column name="orderGlass_budget_costumers_id" not-null="true" />
+        </many-to-one>
+        <property name="finishedDate" type="date">
+            <column name="FinishedDate" length="10" />
+        </property>
+        <property name="state" type="int">
+            <column name="state" not-null="true" />
+        </property>
+        <set name="replacements" table="replacement" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="glasses_id" not-null="true" />
+                <column name="glasses_orderGlass_id" not-null="true" />
+                <column name="glasses_orderGlass_budget_id" not-null="true" />
+                <column name="glasses_orderGlass_budget_costumers_id" not-null="true" />
+            </key>
+            <one-to-many class="com.jotase.crystalsystem.models.Replacement" />
+        </set>
+    </class>
+</hibernate-mapping>

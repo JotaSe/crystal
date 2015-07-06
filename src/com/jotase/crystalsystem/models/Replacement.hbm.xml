@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 4, 2015 1:37:23 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.jotase.crystalsystem.models.Replacement" table="replacement" catalog="cristal">
+        <composite-id name="id" class="com.jotase.crystalsystem.models.ReplacementId">
+            <key-property name="id" type="int">
+                <column name="id" />
+            </key-property>
+            <key-property name="glassesId" type="int">
+                <column name="glasses_id" />
+            </key-property>
+            <key-property name="glassesOrderGlassId" type="int">
+                <column name="glasses_orderGlass_id" />
+            </key-property>
+            <key-property name="glassesOrderGlassBudgetId" type="int">
+                <column name="glasses_orderGlass_budget_id" />
+            </key-property>
+            <key-property name="glassesOrderGlassBudgetCostumersId" type="int">
+                <column name="glasses_orderGlass_budget_costumers_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="glasses" class="com.jotase.crystalsystem.models.Glasses" update="false" insert="false" fetch="select">
+            <column name="glasses_id" not-null="true" />
+            <column name="glasses_orderGlass_id" not-null="true" />
+            <column name="glasses_orderGlass_budget_id" not-null="true" />
+            <column name="glasses_orderGlass_budget_costumers_id" not-null="true" />
+        </many-to-one>
+        <property name="state" type="java.lang.Integer">
+            <column name="state" />
+        </property>
+        <property name="comment" type="string">
+            <column name="comment" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>
