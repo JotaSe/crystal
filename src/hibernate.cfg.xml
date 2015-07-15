@@ -7,7 +7,9 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cristal?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">arepax</property>
-    <mapping resource="com/jotase/crystalsystem/models/Costumers.hbm.xml"/>
+    <mapping resource="com/jotase/crystalsystem/models/OrderglassHasService.hbm.xml"/>
+    <mapping resource="com/jotase/crystalsystem/models/Customers.hbm.xml"/>
+    <mapping resource="com/jotase/crystalsystem/models/Service.hbm.xml"/>
     <mapping resource="com/jotase/crystalsystem/models/Budget.hbm.xml"/>
     <mapping resource="com/jotase/crystalsystem/models/Glasses.hbm.xml"/>
     <mapping resource="com/jotase/crystalsystem/models/Orderglass.hbm.xml"/>

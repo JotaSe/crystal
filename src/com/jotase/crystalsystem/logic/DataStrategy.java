@@ -6,7 +6,6 @@
 package com.jotase.crystalsystem.logic;
 
 import com.jotase.crystalsystem.models.DAO.DAO;
-import com.jotase.crystalsystem.utils.UxUTils;
 import com.jotase.crystalsystem.utils.Validate;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -14,12 +13,13 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author JotaSe
+ * @param <T>
  */
 public class DataStrategy<T> {
 
     final DAO<T> dao = new DAO<>();
     final Validate validate = new Validate();
-    boolean enabled;
+    boolean enabled = true;
     private boolean EDITABLE;
 
     public boolean save(T t) {
@@ -59,8 +59,13 @@ public class DataStrategy<T> {
     public List<T> getList(String from, String query) {
         return dao.getList("from " + from + " " + query);
     }
+    
 
     public void edit() {
         enabled = true;
+    }
+    
+    public T get(T t,String query){
+        return dao.get(t, query);
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 15, 2015 1:51:54 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.jotase.crystalsystem.models.Service" table="service" catalog="cristal">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" not-null="true" />
+        </property>
+        <property name="thickness" type="java.lang.Integer">
+            <column name="thickness" />
+        </property>
+        <property name="priceType" type="java.lang.Integer">
+            <column name="priceType" />
+        </property>
+        <property name="cost" type="java.lang.Double">
+            <column name="cost" precision="22" scale="0" />
+        </property>
+        <set name="orderglassHasServices" table="orderglass_has_service" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="service_id" not-null="true" />
+            </key>
+            <one-to-many class="com.jotase.crystalsystem.models.OrderglassHasService" />
+        </set>
+    </class>
+</hibernate-mapping>

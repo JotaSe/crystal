@@ -1,5 +1,5 @@
 package com.jotase.crystalsystem.models;
-// Generated Jul 4, 2015 1:37:22 PM by Hibernate Tools 3.6.0
+// Generated Jul 15, 2015 1:51:53 PM by Hibernate Tools 3.6.0
 
 
 import javax.persistence.Column;
@@ -13,14 +13,14 @@ public class BudgetId  implements java.io.Serializable {
 
 
      private int id;
-     private int costumersId;
+     private int customersId;
 
     public BudgetId() {
     }
 
-    public BudgetId(int id, int costumersId) {
+    public BudgetId(int id, int customersId) {
        this.id = id;
-       this.costumersId = costumersId;
+       this.customersId = customersId;
     }
    
 
@@ -35,13 +35,13 @@ public class BudgetId  implements java.io.Serializable {
     }
 
 
-    @Column(name="costumers_id", nullable=false)
-    public int getCostumersId() {
-        return this.costumersId;
+    @Column(name="customers_id", nullable=false)
+    public int getCustomersId() {
+        return this.customersId;
     }
     
-    public void setCostumersId(int costumersId) {
-        this.costumersId = costumersId;
+    public void setCustomersId(int customersId) {
+        this.customersId = customersId;
     }
 
 
@@ -52,14 +52,14 @@ public class BudgetId  implements java.io.Serializable {
 		 BudgetId castOther = ( BudgetId ) other; 
          
 		 return (this.getId()==castOther.getId())
- && (this.getCostumersId()==castOther.getCostumersId());
+ && (this.getCustomersId()==castOther.getCustomersId());
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getId();
-         result = 37 * result + this.getCostumersId();
+         result = 37 * result + this.getCustomersId();
          return result;
    }   
 

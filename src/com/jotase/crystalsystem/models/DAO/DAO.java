@@ -42,4 +42,7 @@ public class DAO<T> {
         query = (query != null) ? (" where " + query) : "";
         return query;
     }
+    private T getByFilter(T t, String query){
+        return null;
+    }
 }

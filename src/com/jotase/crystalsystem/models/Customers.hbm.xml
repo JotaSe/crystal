@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 4, 2015 1:37:23 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated Jul 15, 2015 1:51:54 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="com.jotase.crystalsystem.models.Costumers" table="costumers" catalog="cristal">
+    <class name="com.jotase.crystalsystem.models.Customers" table="customers" catalog="cristal">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
@@ -20,9 +20,15 @@
         <property name="address" type="string">
             <column name="address" length="45" />
         </property>
+        <property name="email" type="string">
+            <column name="email" length="90" />
+        </property>
+        <property name="contacto" type="string">
+            <column name="Contacto" length="45" not-null="true" />
+        </property>
         <set name="budgets" table="budget" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="costumers_id" not-null="true" />
+                <column name="customers_id" not-null="true" />
             </key>
             <one-to-many class="com.jotase.crystalsystem.models.Budget" />
         </set>

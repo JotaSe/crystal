@@ -17,7 +17,8 @@ public class GlassAttr {
         SMALL_TACAS(1, "Tacas pequeñas"),
         BIG_TACAS(2, "Tacas grandes"),
         EDGING(3, "Canteo"),
-        FULL_SERVICE(4, "Templado y canteo incluido");
+        FULL_SERVICE(4, "Templado y canteo incluido"),
+        TEMPERED(5,"Templado");
         final int id;
         final String name;
 
@@ -80,6 +81,11 @@ public class GlassAttr {
         public int getId() {
             return id;
         }
+
+        public int getThickness() {
+            return thickness;
+        }
+        
 
         public static GlassThickness getState(int id) {
             for (GlassThickness action : GlassThickness.values()) {

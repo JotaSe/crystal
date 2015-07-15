@@ -6,6 +6,9 @@
 
 package crystalsystem;
 
+import com.jotase.crystalsystem.view.CustomersView;
+import com.jotase.crystalsystem.view.Home;
+
 /**
  *
  * @author JotaSe
@@ -16,7 +19,11 @@ public class CrystalSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        CustomersView view = new CustomersView();
+        Home home = new Home();
+        home.setVisible(true);
+        home.add(view);
+        view.setVisible(true);
     }
     
 }

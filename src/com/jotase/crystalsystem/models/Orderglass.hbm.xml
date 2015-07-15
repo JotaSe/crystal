@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 4, 2015 1:37:23 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated Jul 15, 2015 1:51:54 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.jotase.crystalsystem.models.Orderglass" table="orderglass" catalog="cristal">
         <composite-id name="id" class="com.jotase.crystalsystem.models.OrderglassId">
@@ -43,6 +43,14 @@
         <property name="supplied" type="java.lang.Boolean">
             <column name="supplied" />
         </property>
+        <set name="orderglassHasServices" table="orderglass_has_service" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="orderGlass_id" not-null="true" />
+                <column name="orderGlass_budget_id" not-null="true" />
+                <column name="orderGlass_budget_costumers_id" not-null="true" />
+            </key>
+            <one-to-many class="com.jotase.crystalsystem.models.OrderglassHasService" />
+        </set>
         <set name="glasseses" table="glasses" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="orderGlass_id" not-null="true" />

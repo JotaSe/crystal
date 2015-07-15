@@ -1,25 +1,28 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 4, 2015 1:37:23 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated Jul 15, 2015 1:51:54 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.jotase.crystalsystem.models.Budget" table="budget" catalog="cristal">
         <composite-id name="id" class="com.jotase.crystalsystem.models.BudgetId">
             <key-property name="id" type="int">
                 <column name="id" />
             </key-property>
-            <key-property name="costumersId" type="int">
-                <column name="costumers_id" />
+            <key-property name="customersId" type="int">
+                <column name="customers_id" />
             </key-property>
         </composite-id>
-        <many-to-one name="costumers" class="com.jotase.crystalsystem.models.Costumers" update="false" insert="false" fetch="select">
-            <column name="costumers_id" not-null="true" />
+        <many-to-one name="customers" class="com.jotase.crystalsystem.models.Customers" update="false" insert="false" fetch="select">
+            <column name="customers_id" not-null="true" />
         </many-to-one>
         <property name="subtotal" type="double">
             <column name="subtotal" precision="22" scale="0" not-null="true" />
         </property>
         <property name="total" type="double">
             <column name="total" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="deadline" type="date">
+            <column name="deadline" length="10" not-null="true" />
         </property>
         <property name="date" type="date">
             <column name="date" length="10" not-null="true" />

@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jotase.crystalsystem.controller;
+
+package com.jotase.crystalsystem.logic;
 
 /**
- * Interface class for controller classes
  *
  * @author JotaSe
- * @param <T>
  */
-public interface ControllerInterface<T> {
-
-    public void load();
-
+public class CustomerViewStrategy {
+    
 }

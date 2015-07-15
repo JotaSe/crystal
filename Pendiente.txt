@@ -1,0 +1,8 @@
+Calculo de area
+X = area, h = altura, w= ancho
+
+X < 1mt² = mt²
+
+h > 1.90mt = 2.40mt
+
+h > 2.40 = 3.30mt

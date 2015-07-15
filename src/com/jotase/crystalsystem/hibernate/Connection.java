@@ -13,9 +13,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.service.Service;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.internal.AbstractServiceRegistryImpl;
 
 /**
  *
@@ -23,12 +20,11 @@ import org.hibernate.service.internal.AbstractServiceRegistryImpl;
  */
 public class Connection {
 
-    public   Session session;
-    private static  Transaction transaccion;
+    public Session session;
+    private static Transaction transaccion;
     private static SessionFactory sessionFactory;
     private static Connection _instance;
     boolean complete = false;
-
 
     /**
      * Singleton constructor
@@ -38,8 +34,7 @@ public class Connection {
 
             System.out.println("connecting");
             sessionFactory = new AnnotationConfiguration()
-                    .configure()
-                    .buildSessionFactory(null);
+                    .configure().buildSessionFactory();
         } catch (HibernateException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -56,8 +51,11 @@ public class Connection {
     }
 
     private void end() {
-        complete = true;
-        session.close();
+        try {
+            complete = true;
+            session.close();
+        } catch (HibernateException hibernateException) {
+        }
     }
 
     private void error(HibernateException e) {
@@ -76,7 +74,7 @@ public class Connection {
         } catch (HibernateException e) {
             error(e);
         } finally {
-            JOptionPane.showMessageDialog(null, "Transaction complete");
+            // JOptionPane.showMessageDialog(null, "Transaction complete");
 
             end();
         }
@@ -94,7 +92,7 @@ public class Connection {
         } catch (HibernateException e) {
             error(e);
         } finally {
-            JOptionPane.showMessageDialog(null, "Transaction complete");
+            //JOptionPane.showMessageDialog(null, "Transaction complete");
 
             end();
         }
@@ -110,7 +108,7 @@ public class Connection {
         } catch (HibernateException e) {
             error(e);
         } finally {
-            JOptionPane.showMessageDialog(null, "Transaction complete");
+            // JOptionPane.showMessageDialog(null, "Transaction complete");
             end();
         }
         return complete;
@@ -137,13 +135,19 @@ public class Connection {
     public Object get(Object object, String _query) {
         begin();
         try {
-            object = session.get(Object.class, _query);
-            transaccion.commit();
+            if (_query.isEmpty()) {
+                object = session.get(Object.class, _query);
+                transaccion.commit();
+            }else{
+                object = get(_query);
+            }
+            
         } catch (HibernateException e) {
-            JOptionPane.showMessageDialog(null, "Error :" + e.getMessage());
+            e.printStackTrace();
+
             transaccion.rollback();
         } finally {
-            JOptionPane.showMessageDialog(null, "Transaction complete");
+            // JOptionPane.showMessageDialog(null, "Transaction complete");
             end();
         }
 

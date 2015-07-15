@@ -1,5 +1,5 @@
 package com.jotase.crystalsystem.models;
-// Generated Jul 4, 2015 1:37:22 PM by Hibernate Tools 3.6.0
+// Generated Jul 15, 2015 1:51:53 PM by Hibernate Tools 3.6.0
 
 
 import javax.persistence.Column;
