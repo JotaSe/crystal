@@ -7,11 +7,13 @@ package com.jotase.crystalsystem.logic;
 
 import com.jotase.crystalsystem.utils.UxUTils;
 import java.awt.Container;
-import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author JotaSe
+ * @param <T> Data model object
+ * @param <K> JComponet for the view
  */
 public class ControllerStrategy<T, K> extends DataStrategy<T> {
 
@@ -27,13 +29,14 @@ public class ControllerStrategy<T, K> extends DataStrategy<T> {
     public void save() {
         if (save(retrieveObject())) {
             cancel();
-            message.showMessage(message.SAVED, t);
+            message.showMessage(message.SAVED, t, true);
         }
     }
 
     public void delete() {
-        delete(t);
-        message.showMessage(message.DELETED, t);
+
+        message.showMessage(message.DELETED, t, delete(t));
+
     }
 
     @Override
@@ -46,9 +49,9 @@ public class ControllerStrategy<T, K> extends DataStrategy<T> {
     public void cancel() {
         util.clean((Container) view);
     }
-    
-    public void search(){
-        
+
+    public void search() {
+
     }
 
 }

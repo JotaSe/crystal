@@ -5,11 +5,11 @@
  */
 package com.jotase.crystalsystem.test;
 
-import com.jotase.crystalsystem.models.DAO.DAO;
+import com.jotase.crystalsystem.models.DAO.OrderGlassDAO;
 import com.jotase.crystalsystem.models.DAO.ServiceDAO;
 import com.jotase.crystalsystem.models.Service;
-
 import com.jotase.crystalsystem.models.enums.GlassAttr;
+import java.lang.reflect.Field;
 
 /**
  *
@@ -23,7 +23,11 @@ public class DBTest {
     public static void main(String[] args) {
         // TODO code application logic here
         DBTest test = new DBTest();
-        test.fooTest();
+       // test.fooTest();
+        Field[] fields =OrderGlassDAO.class.getFields();
+        for (Field field : fields) {
+            System.out.println("field "+field.getName());
+        }
         //test.createServices();
     }
 
@@ -70,6 +74,11 @@ public class DBTest {
         public void b() {
             a();
         }
+        
+        public void asd(final int a){
+            
+        }
     }
+    
 
 }

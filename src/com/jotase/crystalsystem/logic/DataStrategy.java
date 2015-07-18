@@ -44,11 +44,13 @@ public class DataStrategy<T> {
         }
     }
 
-    public void delete(T t) {
+    public boolean delete(T t) {
         if (EDITABLE) {
             dao.delete(t);
+            return true;
         } else {
             setEditFirst();
+            return false;
         }
     }
 
