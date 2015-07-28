@@ -5,35 +5,44 @@
  */
 package com.jotase.crystalsystem.test;
 
+import com.jotase.crystalsystem.models.Customers;
 import com.jotase.crystalsystem.models.DAO.OrderGlassDAO;
 import com.jotase.crystalsystem.models.DAO.ServiceDAO;
 import com.jotase.crystalsystem.models.Service;
 import com.jotase.crystalsystem.models.enums.GlassAttr;
+import com.jotase.crystalsystem.view.SearchView;
 import java.lang.reflect.Field;
 
 /**
  *
  * @author JotaSe
  */
-public class DBTest {
+public class Test {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        DBTest test = new DBTest();
-       // test.fooTest();
-        Field[] fields =OrderGlassDAO.class.getFields();
-        for (Field field : fields) {
-            System.out.println("field "+field.getName());
-        }
+        Test test = new Test();
+        // test.fooTest();
+        test.searchTest();
         //test.createServices();
     }
 
     private void fooTest() {
         Foo foo = new Foo();
         foo.a();
+    }
+    
+    private void searchTest() {
+        Customers t = new Customers();
+        
+        final SearchView sv = new SearchView(t);
+
+        sv.setVisible(true);
+
+         t = (Customers) sv.controller.getObject();
     }
 
     private void createServices() {
@@ -74,11 +83,10 @@ public class DBTest {
         public void b() {
             a();
         }
-        
-        public void asd(final int a){
-            
+
+        public void asd(final int a) {
+
         }
     }
-    
 
 }

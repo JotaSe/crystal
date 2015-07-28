@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class DataStrategy<T> {
 
-    final DAO<T> dao = new DAO<>();
+    final public DAO<T> dao = new DAO<>();
     final Validate validate = new Validate();
     boolean enabled = true;
     private boolean EDITABLE;

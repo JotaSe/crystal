@@ -26,7 +26,7 @@ public class BudgetDAO extends DAO<Budget> implements QueryInterface<Budget> {
         final CustomerDAO dao = new CustomerDAO();
         switch (query) {
             case GET_BUDGET_BY_ID:
-                return "from budget where id = " + t.getId();
+                return "from budget where id = " + t.getId().getId();
             case GET_BUDGET_BY_INVOICE:
                 return "from budget where invoice ='" + t.getInvoice() + "'";
             case GET_BUDGET_BY_CUSTOMERS_ID:

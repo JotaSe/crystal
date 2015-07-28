@@ -21,7 +21,7 @@ public class GlassesDAO extends DAO<Glasses> implements QueryInterface<Glasses> 
     public String getQuery(Glasses t, int query) {
         switch (query) {
             case GET_GLASSES_BY_ID:
-                return "from Glasses where id =" + t.getId();
+                return "from Glasses where id =" + t.getId().getId();
             case GET_GLASSES_BY_STATE:
                 return "from glasses where state =" + t.getState();
             default:

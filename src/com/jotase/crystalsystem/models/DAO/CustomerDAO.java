@@ -39,7 +39,7 @@ public class CustomerDAO extends DAO<Customers> implements QueryInterface<Custom
                 return "from Customers where email ='" + t.getContacto() + "'";
             case 0:
             default:
-                return "from Costumers";
+                return "from Customers";
         }
     }
 

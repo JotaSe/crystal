@@ -19,6 +19,7 @@ public class CustomerController extends ControllerStrategy<Customers, CustomersV
 
     public CustomerController(CustomersView view) {
         this.view = view;
+        t = new Customers();
     }
 
     @Override

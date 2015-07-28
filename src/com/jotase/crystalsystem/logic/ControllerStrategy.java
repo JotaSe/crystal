@@ -6,6 +6,7 @@
 package com.jotase.crystalsystem.logic;
 
 import com.jotase.crystalsystem.utils.UxUTils;
+import com.jotase.crystalsystem.view.SearchView;
 import java.awt.Container;
 
 
@@ -22,6 +23,7 @@ public class ControllerStrategy<T, K> extends DataStrategy<T> {
     public T t;
     final MessageStrategy message = new MessageStrategy();
 
+    
     public T retrieveObject() {
         return null;
     }
@@ -51,7 +53,12 @@ public class ControllerStrategy<T, K> extends DataStrategy<T> {
     }
 
     public void search() {
-
+        final SearchView sv = new SearchView(t);
+       
+        sv.setVisible(true);
+        
+        
+        t = (T) sv.controller.getObject();
     }
 
 }
