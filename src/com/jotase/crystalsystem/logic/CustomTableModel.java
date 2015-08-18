@@ -95,6 +95,7 @@ public class CustomTableModel<T> implements javax.swing.table.TableModel {
     public Object getValueAt(int rowIndex, int columnIndex
     ) {
         //ID", "Nombre", "Telefono", "RIF", "Direccion", "Email", "Contacto
+        temp = source.get(rowIndex);
         if (temp instanceof Customers) {
             final Customers object = (Customers) temp;
             switch (columnIndex) {

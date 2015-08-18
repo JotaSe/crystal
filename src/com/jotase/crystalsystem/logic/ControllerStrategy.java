@@ -56,8 +56,6 @@ public class ControllerStrategy<T, K> extends DataStrategy<T> {
         final SearchView sv = new SearchView(t);
        
         sv.setVisible(true);
-        
-        
         t = (T) sv.controller.getObject();
     }
 

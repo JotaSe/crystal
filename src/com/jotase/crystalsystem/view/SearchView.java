@@ -197,9 +197,10 @@ public class SearchView<T> extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-//        int r = jTable1.getSelectedRow();
-//        System.out.println(jTable1.getValueAt(r, 0));
-//        if(evt.getClickCount() >= 2 ){ controller.setBusqueda(PADRE,r); dispose();}
+
+        if (evt.getClickCount() >= 2) {
+            controller.selectObject();
+        }
 
     }//GEN-LAST:event_jTable1MouseClicked
 

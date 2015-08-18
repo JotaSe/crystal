@@ -30,6 +30,7 @@ public class CustomerController extends ControllerStrategy<Customers, CustomersV
         customers.setName(view.getjTextField2().getText());
         customers.setEmail(view.getjTextField4().getText());
         customers.setTelephone(view.getjTextField3().getText());
+        customers.setContacto(view.getjTextField5().getText());
         return customers;
     }
 
@@ -40,6 +41,7 @@ public class CustomerController extends ControllerStrategy<Customers, CustomersV
         view.getjTextField2().setText(t.getName());
         view.getjTextField3().setText(t.getTelephone());
         view.getjTextField4().setText(t.getEmail());
+        view.getjTextField5().setText(t.getContacto());
 
     }
 

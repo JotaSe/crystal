@@ -24,7 +24,6 @@ import com.jotase.crystalsystem.models.Service;
 import com.jotase.crystalsystem.models.enums.GlassAttr;
 import com.jotase.crystalsystem.view.SearchView;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +37,7 @@ import java.util.List;
 public class SearchController<T> extends ControllerStrategy<T, SearchView> implements ControllerInterface<T> {
 
     T t;
+    List<T> ts = new ArrayList<T>();
     final QueryStrategy queryStrategy = new QueryStrategy();
     final FormatStrategy formatStrategy = new FormatStrategy();
 
@@ -61,7 +61,7 @@ public class SearchController<T> extends ControllerStrategy<T, SearchView> imple
         switch (type) {
             case FormatStrategy.DOUBLE:
             case FormatStrategy.INTEGER:
-                view.getSearchButton().setEnabled(formatStrategy.setFormat(type, view.getjTextField1(),evt));
+                view.getSearchButton().setEnabled(formatStrategy.setFormat(type, view.getjTextField1(), evt));
                 //view.getjTextField1().requestFocus();
                 break;
 
@@ -134,7 +134,7 @@ public class SearchController<T> extends ControllerStrategy<T, SearchView> imple
     @Override
     public void load() {
         String value = (view.getjTextField1().isEnabled()) ? view.getjTextField1().getText() : view.getComboValue().getSelectedItem().toString();
-        List<T> ts = new ArrayList<T>();
+        ts.clear();
         final int index = view.getComboFilters().getSelectedIndex();
         value = (index == 0) ? "1" : value;
         if (t instanceof Customers) {
@@ -152,6 +152,10 @@ public class SearchController<T> extends ControllerStrategy<T, SearchView> imple
             object.setName(value);
             object.setTelephone(value);
             ts = dao.getList(temp.getQuery(object, index));
+            for (T t1 : ts) {
+                Customers t2 = (Customers) t1;
+                System.out.println(t2.getId());
+            }
 
         } else if (t instanceof Budget) {
             final Budget object = (Budget) t;
@@ -227,8 +231,9 @@ public class SearchController<T> extends ControllerStrategy<T, SearchView> imple
         return t;
     }
 
-    public void formatInput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void selectObject() {
+        t = ts.get(view.getTable().getSelectedRow());
+        
     }
 
 }
